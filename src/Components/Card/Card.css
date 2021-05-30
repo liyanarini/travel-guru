@@ -1,0 +1,14 @@
+.card-body{
+    color: white;
+}
+.card-body img:hover{
+    border: 3px solid orange;
+    border-radius: 17px;
+}
+img{
+    width: 110%;
+}
+.img-title{
+    position: relative;
+    margin: -70px 0 0 15%;
+}

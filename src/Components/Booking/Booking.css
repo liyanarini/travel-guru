@@ -1,0 +1,32 @@
+.form-area{
+    margin: 10% 0 0 25% ;
+    padding: 10px 10px 40px 20px;
+    background-color: white;
+    border-radius: 5px;
+}
+label{
+color: gray;
+margin-left: 20px;
+font-size: 12px;
+margin-top: 5%;
+}
+input{
+    background-color: lightgray;
+    border: none;
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.date-input input{
+    width: 80%;
+    height: 50px ;
+}
+.date-input{
+    margin-left: 2%;
+}
+.book-btn{
+    width: 90%;
+    height: 50px;
+    margin-top: 30px;
+}
