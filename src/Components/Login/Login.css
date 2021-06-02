@@ -1,0 +1,60 @@
+
+.login-form{
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 40px;
+    margin-top: 40px;
+}
+.input{
+    background: none;
+    border: none;
+    border-bottom:1px solid lightgray ;
+    margin: 5% 5px;
+}
+#login{
+    margin-left: 2%;
+    color: black;
+}
+Form{
+    color: gray;
+}
+.password{
+    color: orange;
+}
+.forgot{
+    margin: 5px;
+}
+.submit-btn{
+    padding: 10px 80px;
+    font-size: 20px;
+    background-color: orange;
+    margin-top: 20px;
+}
+.checkbox{
+    width: 25px;
+}
+.footer-text{
+    margin-top: 40px;
+}
+.footer-text span{
+    color: black;
+    font-weight: 600;
+}
+.toggle{
+    background-color: transparent;
+    border: none;
+    color: orange;
+}
+.footer{
+    text-align: center;
+    margin: 5%;
+}
+.logo{
+    width: 7%;
+}
+.fb-google-btn{
+    width: 70%;
+    height: 40px;
+    margin-top: 20px;
+
+}

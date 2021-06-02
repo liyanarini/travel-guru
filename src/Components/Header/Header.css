@@ -15,7 +15,7 @@
 .input-field::placeholder{
     color: white;
 }
-a{
+form a{
     text-decoration: none;
     color: hsl(0, 0%, 100%);
     margin: 1.5% 2%;
@@ -23,7 +23,7 @@ a{
 input{
     margin: 1% 2%;
 }
-.btn{
+.login-btn{
     margin: 1% 2%;
     padding: 0 20px;
     height: 40px;

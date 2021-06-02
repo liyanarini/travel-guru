@@ -17,7 +17,7 @@ const Header = () => {
                 <a href="#">Blog</a>
                 <a href="#">Contact</a>
                 <Link to="/login">
-                  <button className="btn btn-warning home__btn">Login</button>            
+                  <button className="btn btn-warning login-btn">Login</button>            
                 </Link>
                 </form>
             </div>

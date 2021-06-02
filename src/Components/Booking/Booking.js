@@ -28,16 +28,16 @@ const Booking = () => {
                                 <label> Destination</label>
                                 <br />
                                 <input name="destination" type="text" />
-                                <div className="d-flex date-input">
+                                <div className="d-flex justify-content-between date-input">
                                     <div>
                                         <label>From</label>
                                         <br />
-                                        <input type="text" />
+                                        <input type="date" />
                                     </div>
                                     <div className="to-input">
                                         <label>To</label>
                                         <br />
-                                        <input type="text" />
+                                        <input type="date" />
                                     </div>
                                 </div>
                                 <Link to={`/book/hotel/for/${name}`}>
