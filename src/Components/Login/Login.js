@@ -26,7 +26,7 @@ const Login = () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(provider).then(function(result) {
                 const {displayName , email} = result.user;
-                const googleNewUser = {name : displayName ,  emails:email}
+                const googleNewUser = {name : displayName ,  email:email}
                 setLoggedInUser(googleNewUser);
                 history.replace(from);
                 })
@@ -42,8 +42,8 @@ const Login = () => {
         firebase.auth().signInWithPopup(fbProvider)
         .then(function(result) {
             const {displayName , email} = result.user;
-            const googleNewUser = {name : displayName ,  emails:email}
-            setLoggedInUser(googleNewUser);
+            const fbNewUser = {name : displayName ,  email:email}
+            setLoggedInUser(fbNewUser);
             history.replace(from);
         })
         .catch(function(error) {
@@ -52,6 +52,60 @@ const Login = () => {
                     setLoggedInUser(newUserInfo);
           });
     }
+
+    const handleChange = (e) => {
+        let isFormValid = true;
+
+        if (e.target.name === "email"){
+            const isEmailValid = /\S+@\S+\.\S+/.test(e.target.value);
+            console.log(isEmailValid);
+        }
+        if (e.target.name === "password"){
+            const inPassValid = e.target.value.length >= 6;
+            console.log(inPassValid);
+        }
+        if (isFormValid){
+            const newUserInfo = {...loggedInUser};
+            newUserInfo[e.target.name] = e.target.value;
+            setLoggedInUser(newUserInfo);
+        }
+    }
+
+    const handleSubmit = (e) => {
+        if (user && loggedInUser.email && loggedInUser.password) {
+            firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
+            .then(res => {
+                    history.replace(from);
+                    user.updateProfile({
+                    displayName:loggedInUser.name ,
+                    email: loggedInUser.email
+                })
+            })
+            .catch(function(error) {
+                    const newUserInfo = { ...loggedInUser };
+                    newUserInfo.message = error.message;
+                    newUserInfo.success = false;
+                    setLoggedInUser(newUserInfo);
+            });
+         }
+         if(!user && loggedInUser.email && loggedInUser.password){
+             firebase.auth().signInWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
+            .then(res => {
+                    const {displayName , email} = res.user;
+                    const googleNewUser = {name : displayName , email:email}
+                    setLoggedInUser(googleNewUser);
+                    history.replace(from);
+            })
+            .catch(error => {
+                    const newUserInfo = { ...loggedInUser };
+                    newUserInfo.message = error.message;
+                    newUserInfo.success = false;
+                    setLoggedInUser(newUserInfo);
+            });
+         } 
+         e.preventDefault();
+    }
+
     return (
         <div>
             <div className="header-area">
@@ -60,51 +114,45 @@ const Login = () => {
             <div>
                 <div className="container">
                     <div className="d-flex align-items-center">
-                        <div className="col-md-6 offset-3">
-                            <div className="login-form" action="">
-                                {
-                                    user? <h4> Create an account </h4> : <h4> Login </h4>
-                                }
-                                  <Form>
-                                    <Form.Group >
+                      <div className="col-md-6 offset-3">
+                        <div className=" login-form">
+                            {
+                                user? <h4> Create an account </h4> : <h4> Login </h4>
+                            }
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group>
                                     {
-                                    user && <Form.Group >
-                                    <Form.Control className="input" type="text" placeholder="First Name" />
-                                    <Form.Control className="input" type="text" placeholder="Last Name" />
-                                    </Form.Group>
+                                        user && <Form.Group >
+                                        <Form.Control onBlur={handleChange} name="firstName" required className="input" type="text" placeholder="First Name" />
+                                        <Form.Control onBlur={handleChange} name="lastName" required className="input" type="text" placeholder="Last Name" />
+                                        </Form.Group>
                                     }
-                                      <Form.Control className="input" type="email" placeholder="Username or Email" />
-                                      
-                                      <Form.Group>
-                                        <Form.Control className="input" type="password" placeholder="Password" />
-                                      </Form.Group>
-                                    
+
+                                    <Form.Control onBlur={handleChange} name="email" required className="input" type="email" placeholder="Username or Email" />
+
+                                    <Form.Control onBlur={handleChange} name="password" required className="input" type="password" placeholder="Password" />
 
                                     {
-                                        user &&  <Form.Group>
-                                        <Form.Control className="input" type="password" placeholder="Confirm Password" />
-                                      </Form.Group>
+                                            user &&
+                                            <Form.Control onBlur={handleChange} name="confirmPassword" className="input" required type="password" placeholder="Confirm Password" />
                                     }
-                                
-                                    <Form.Group className="forgot d-flex justify-content-between">
-                                        <Form.Check className="checkbox " type="checkbox" label="Remember me"/>
-                                        <Link className="password">Forgot Password?</Link>
-                                   </Form.Group>
-                                        <div className='d-flex justify-content-center login-btn'>
-                                        {
+
+                                    {
                                             user? <input className="submit-btn" variant="warning" type="submit" value='Create an account' /> : <input className="submit-btn" variant="warning" type="submit" value='Log In' />
-                                        }
-                                        </div>
-                                    
-                                        <div className='text-center text-light footer-text '>
-                                    {user ? 
-                                        <span>You alrady have an account? <Link className="toggle" onClick={() =>setUser(!user)}> Log in </Link> </span> 
-                                        : <span>Don’t have an account? <Link className="toggle" onClick={() => setUser(!user)}> Create an account</Link> </span>
                                     }
-                                      </div> 
-                                    </Form.Group>
-                                  </Form>
-                             </div>
+
+                                    <div className='text-center text-light footer-text '>
+                                    {
+                                            user ? 
+                                            <span>You alrady have an account? 
+                                                <Link className="toggle" onClick={() =>setUser(!user)}> Log in </Link> 
+                                            </span> 
+                                                : <span>Don’t have an account? <Link className="toggle" onClick={() => setUser(!user)}> Create an account</Link> </span>
+                                    }
+                                </div>
+                            </Form.Group>
+                        </Form> 
+                        </div>
                              <div className="footer">
                                 <h6>-------------------- or ------------------</h6>
                                 <button onClick={fbLogIn} className="fb-google-btn">
@@ -114,7 +162,8 @@ const Login = () => {
                                     <img className="logo" src={GoogleLogo} alt="" /> Continue with Google
                                 </button>
                              </div>
-                        </div>
+                             <h4>{loggedInUser.message}</h4>
+                      </div>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { UserContext } from '../../App';
 import logo from '../../Image/Logo.png'
 import './Header.css'
 
 const Header = () => {
+    const [loggedInUser , setLoggedInUser] = useContext(UserContext);
     return (
         <div className="header">
             <nav className="navbar navbar-light bg-transparent">
@@ -16,9 +18,16 @@ const Header = () => {
                 <a href="#">Destination</a>
                 <a href="#">Blog</a>
                 <a href="#">Contact</a>
-                <Link to="/login">
-                  <button className="btn btn-warning login-btn">Login</button>            
-                </Link>
+
+                {
+                    loggedInUser.email? <button className="btn btn-warning login-btn">Log Out</button> :
+                    <Link to="/login">
+                    <button className="btn btn-warning login-btn">Login</button>            
+                    </Link>
+                }
+                   {/* <Link to="/login">
+                    <button className="btn btn-warning login-btn">Login</button>            
+                    </Link> */}
                 </form>
             </div>
             </nav>

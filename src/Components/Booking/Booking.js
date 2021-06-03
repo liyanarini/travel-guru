@@ -21,6 +21,7 @@ const Booking = () => {
                         </div>
                         <div className="col-md-7 ">
                             <div className="form-area">
+                                <form>
                                 <label >Origin</label>
                                 <br />
                                 <input name="origin" type="text" />
@@ -41,10 +42,11 @@ const Booking = () => {
                                     </div>
                                 </div>
                                 <Link to={`/book/hotel/for/${name}`}>
-                                    <button className="btn btn-warning book-btn">
+                                    <button type="submit" className="btn btn-warning book-btn">
                                         Start Booking
                                     </button>
                                 </Link>
+                                </form>
                             </div>
                         </div>
                     </div>

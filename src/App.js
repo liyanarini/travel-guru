@@ -10,13 +10,15 @@ import Booking from './Components/Booking/Booking';
 import BookHotel from './Components/BookHotel/BookHotel';
 import Login from './Components/Login/Login';
 import { createContext, useState } from 'react';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext()
 
 function App() {
   const [loggedInUser , setLoggedInUser]= useState({
-    name :'',
-    emails:'',
+    firstName :'',
+    lastName: '',
+    email:'',
     photo :'',
     password :'',
     message :'',
@@ -34,9 +36,9 @@ function App() {
           <Route path={`/booking/:name`}>
             <Booking/>
           </Route>
-          <Route path={`/book/hotel/for/:name`}>
+          <PrivateRoute path={`/book/hotel/for/:name`}>
             <BookHotel/>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login/>
           </Route>
