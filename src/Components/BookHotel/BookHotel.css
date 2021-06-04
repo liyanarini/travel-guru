@@ -1,7 +1,12 @@
-.hotel-info{
-    color: orange;
-    margin-top: 100px;
+.room_wrapper{
+    margin-top: 50px;
 }
-.area-info{
-    text-align: center;
+.single_room{
+    margin: 20px 0;
+}
+.room_info{
+    margin-left: 10px;
+}
+#hotel-area{
+    color: black;
 }
