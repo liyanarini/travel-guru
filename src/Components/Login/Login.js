@@ -92,7 +92,7 @@ const Login = () => {
              firebase.auth().signInWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
             .then(res => {
                     const {displayName , email} = res.user;
-                    const googleNewUser = {name : displayName , email:email}
+                    const googleNewUser = {name:displayName , email:email}
                     setLoggedInUser(googleNewUser);
                     history.replace(from);
             })

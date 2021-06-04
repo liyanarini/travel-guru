@@ -16,3 +16,8 @@
 .nav-links{
     margin-left: 30%;
 }
+.userName{
+    margin: 1.6% 0 0 15px;
+    color: orange;
+    font-weight: 700;
+}

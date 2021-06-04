@@ -18,6 +18,7 @@ function App() {
   const [loggedInUser , setLoggedInUser]= useState({
     firstName :'',
     lastName: '',
+    name: '',
     email:'',
     photo :'',
     password :'',
