@@ -12,8 +12,8 @@ const HeaderDark = () => {
         <div className="header-area" >
             <nav className="navbar navbar-light bg-transparent">
             <div className="container-fluid">
-            <img className="logo" src={logo} alt="" />
-                <div className="nav-links col d-flex">
+            <img className="dark-logo" src={logo} alt="" />
+                <div className="navLinks nav-links col d-flex">
                     <a href="#">News</a>
                     <a href="#">Destination</a>
                     <a href="#">Blog</a>

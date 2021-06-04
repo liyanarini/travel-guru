@@ -8,7 +8,7 @@ const Card = (props) => {
         <div key={id} className="card-body">
             <Link to={`/booking/${name}`}>
             <img src={img} alt="" />
-            <h5 className="img-title">{title}</h5>
+            <h5 className="img-title" id="img-title">{title}</h5>
             </Link>
         </div>
     );

@@ -1,3 +1,8 @@
+.dark-logo{
+    width: 20%;
+    margin: 0 3%;
+}
+
 .header-area{
     color: black;
     padding: 1% 3%;
@@ -20,4 +25,7 @@
     margin: 1.6% 0 0 15px;
     color: orange;
     font-weight: 700;
+}
+.navLinks a:hover{
+    text-decoration: none;
 }

@@ -1,7 +1,7 @@
-.logo{
-    width: 10%;
+.web-logo{
+    width: 20%;
     margin: 0 3%;
-    background-color: rgb(255, 255, 255);
+    filter: brightness(0) invert(1);
 }
 .header{
     padding: 2% 5%;
@@ -27,4 +27,7 @@ input{
     margin: 1% 2%;
     padding: 0 20px;
     height: 40px;
+}
+form a:hover{
+    text-decoration: none;
 }

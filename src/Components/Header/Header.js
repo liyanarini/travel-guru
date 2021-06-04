@@ -12,7 +12,7 @@ const Header = () => {
             <nav className="navbar navbar-light bg-transparent">
             <div className="container-fluid">
             <form className="d-flex">
-                <img className="logo" src={logo} alt="" />
+                <img className="web-logo" src={logo} alt="" />
                 <input className="form-control input-field" type="search" placeholder="Search your destination..." aria-label="Search" />
                 <a href="#">News</a>
                 <a href="#">Destination</a>
